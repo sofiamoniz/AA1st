@@ -4,6 +4,7 @@ Assignment 1: Estratégias de Desenvolvimento de Algoritmos
             - The Longest Common Subsequence Problem
 Autor: Ana Sofia Fernandes, 88739
 """
+import sys
 
 ##Class that calculates Longest Common Subsquence for two given strings, in a recursive way
 
@@ -12,6 +13,7 @@ class LCS_recursive:
     def __init__(self, seqA , seqB):
         self.seqA = seqA
         self.seqB = seqB
+        sys.setrecursionlimit(15000)
         #self.lcs = ""   
 
     def lcs_recursive_way(self ,m, n):
