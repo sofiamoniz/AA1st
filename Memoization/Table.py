@@ -7,7 +7,7 @@ Autor: Ana Sofia Fernandes, 88739
 
 ##Class that will be used to store repeated subproblems, in the memoization aproach
 
-class Memoization_table:
+class Table:
 
     def __init__(self, lenM, maximum):
         self.lenM = lenM

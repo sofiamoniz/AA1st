@@ -4,7 +4,7 @@ Assignment 1: Estratégias de Desenvolvimento de Algoritmos
             - The Longest Common Subsequence Problem
 Autor: Ana Sofia Fernandes, 88739
 """
-from Memoization_table import Memoization_table
+from Table import Table
 import sys
 
 
@@ -16,7 +16,7 @@ class LCS_memoization:
         self.seqA = seqA
         self.seqB = seqB
         #self.lcs = ""
-        self.table = Memoization_table(len(self.seqA),10000).build_array()
+        self.table = Table(len(self.seqA),10000).build_array()
         sys.setrecursionlimit(15000)
         
     def lcs_memoization(self ,m, n):
@@ -27,7 +27,7 @@ class LCS_memoization:
         complexity of the problem, once it will avoid the occurence of repeated subtrees, in the tree
         (in the recursive version, it may exist subproblems that are solved several times). 
         Thus, an array will be needed so that we can store these subproblemas results - if we want a
-        subproblem solution, first we check if the array already contains it.
+        subproblem solution, we check if the array already contains it.
         """
         # The len of each sequence passed will be used so that a for loop can be avoided
         # m and n is used so that it can be imagined as a matrix
@@ -38,6 +38,8 @@ class LCS_memoization:
                                             #was already computed, so we can take it from the table
             return self.table[m-1][n-1]
 
+        ##In case the table doesn't contain the subproblem solution:
+        
         if (self.seqA[m-1] == self.seqB[n-1]): #If the symbol of each sequence match
             self.table[m-1][n-1] = 1 + self.lcs_memoization(m-1,n-1) #If the symbols match, 1 is added and a move in each sequence is made
             return self.table[m-1][n-1] #We move in the table too
