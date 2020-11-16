@@ -14,4 +14,6 @@ class Table:
         self.n = n
 
     def build_array(self):
-        return [[None]*(self.n+1) for j in range(self.m+1)]
+        #Create a 2D array
+        #The multiplication is made so that we can avoid another for loop
+        return [[-1]*(self.n+1) for j in range(self.m+1)]
