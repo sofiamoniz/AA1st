@@ -15,8 +15,10 @@ class LCS_memoization:
     def __init__(self, seqA , seqB):
         self.seqA = seqA
         self.seqB = seqB
-        #self.lcs = ""
-        self.table = Table(len(self.seqA),10000).build_array()
+        self.lcs = set()
+        self.table = Table(len(self.seqA), len(self.seqB)).build_array()
+        self.i =0
+        self.j=0
         sys.setrecursionlimit(15000)
         
     def lcs_memoization(self ,m, n):
@@ -49,6 +51,47 @@ class LCS_memoization:
                                                                                                     #one returns a max value
             return self.table[m-1][n-1] #We move in the table too
     
+
+    
+    def traceback_table_forward(self,m,n):
+        while(self.i<m and self.j<n):
+            lcs=set()
+            
+            if self.seqA[self.i] == self.seqB[self.j]:
+                lcs.add(self.seqA[self.i])
+                self.i += 1
+                self.j += 1
+            
+            else:
+            #If the last values don't match, the LCS must be constructed by left direction or top direction. We
+            #go for the biggest value, or for both if they are equal
+            #Top direction: table[m-1][n]
+            #Left direction : table[m][n-1]
+
+                if (self.table[self.i][self.j+1] > self.table[self.i+1][self.j]):
+                    self.j+=1
+                    lcs = self.traceback_table(self.i, (self.j)+1)
+                    
+
+                if (self.table[self.i+1][self.j] >= self.table[self.i][self.j+1]):
+                    self.i+=1
+                    lcs = self.traceback_table((self.i)+1, self.j)
+
+                if (self.table[self.i+1][self.j] == self.table[self.i][self.j+1]):
+                    left = self.traceback_table(self.i, self.j+1)
+                    top = self.traceback_table(self.i+1, self.j)
+
+                    for l in left:
+                        for t in top:
+                            lcs.add(l)
+                            lcs.add(t)
+
+                    self.i+=1
+                    self.j+=1
+                    
+
+        return lcs
+
     def get_lcs_len_memoization(self):
 
         """
@@ -56,3 +99,6 @@ class LCS_memoization:
         """
 
         print("The len of LCS (calculated in memoization) is",self.lcs_memoization(len(self.seqA), len(self.seqB)) )
+        print("lcs ", self.traceback_table(len(self.seqA), len(self.seqB)))
+
+       

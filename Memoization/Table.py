@@ -9,10 +9,12 @@ Autor: Ana Sofia Fernandes, 88739
 
 class Table:
 
-    def __init__(self, lenM, maximum):
-        self.lenM = lenM
-        self.maximum = maximum #a maximum value is used so that we never get out of range
+    def __init__(self, m, n):
+        self.m = m
+        self.n = n #a maximum value is used so that we never get out of range
     
     def build_array(self):
-        return [[-1 for i in range(self.maximum)] for j in range(self.lenM)]
+        #Create a 2D array
+        #The multiplication is made so that we can avoid another for loop
+        return [[-1]*(self.n+1) for j in range(self.m+1)]
 

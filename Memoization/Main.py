@@ -60,7 +60,7 @@ def main():
 
                 HORATIO. Well, sit we down, And let us hear Barnardo speak of this.
                 '''
-    lcs = LCS_memoization(string1,string2)
+    lcs = LCS_memoization("ANASOFIA","SOFIAANA")
     lcs.get_lcs_len_memoization()
 
 if __name__ == '__main__':
