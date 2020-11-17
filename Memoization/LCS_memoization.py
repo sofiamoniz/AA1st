@@ -99,6 +99,6 @@ class LCS_memoization:
         """
 
         print("The len of LCS (calculated in memoization) is",self.lcs_memoization(len(self.seqA), len(self.seqB)) )
-        print("lcs ", self.traceback_table(len(self.seqA), len(self.seqB)))
+        #print("lcs ", self.traceback_table(len(self.seqA), len(self.seqB)))
 
        
