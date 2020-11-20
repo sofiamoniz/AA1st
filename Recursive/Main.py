@@ -60,7 +60,7 @@ def main():
 
                 HORATIO. Well, sit we down, And let us hear Barnardo speak of this.
                 '''
-    lcs = LCS_recursive("ANASOFIA", "SOFIAANA")
+    lcs = LCS_recursive("ABAABA", "ACBAALKB")
     lcs.get_lcs_len_recursive()
 
 if __name__ == '__main__':

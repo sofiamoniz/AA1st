@@ -29,68 +29,47 @@ class LCS_memoization:
         complexity of the problem, once it will avoid the occurence of repeated subtrees, in the tree
         (in the recursive version, it may exist subproblems that are solved several times). 
         Thus, an array will be needed so that we can store these subproblemas results - if we want a
-        subproblem solution, we check if the array already contains it.
+        subproblem solution, we check if the array already contains it. It works as a wrap, like we learnt
+        in the course.
         """
+
         # The len of each sequence passed will be used so that a for loop can be avoided
         # m and n is used so that it can be imagined as a matrix
         if (m==0 or n==0): #If any have len=0, 0 will be returned
             return 0
 
-        if (self.table[m-1][n-1] != -1): #If the table doesn't contain -1 at that position, it means that this subproblem
-                                            #was already computed, so we can take it from the table
+        #If the subproblem is not in the table/cache, we calculate it
+        if (self.table[m-1][n-1] == -1): #If the value is -1, we know the subproblem was not calculated
+            if (self.seqA[m-1] == self.seqB[n-1]): #If the symbol of each sequence match
+                self.table[m-1][n-1] = 1 + self.lcs_memoization(m-1,n-1) #If the symbols match, 1 is added and a move in each sequence is made
+                return self.table[m-1][n-1] #We move in the table too
+
+            else:
+                self.table[m-1][n-1] = max(self.lcs_memoization(m-1,n), self.lcs_memoization(m, n-1)) #We move in each sequence and check which
+                                                                                                        #one returns a max value
+                return self.table[m-1][n-1] #We move in the table too
+
+        #If the table/cache doesn't contain -1 at that position, it means that this subproblem
+        #was already computed, so we can take it from the table/cache
+        return self.table[m-1][n-1]
+        '''
+        if (self.table[m-1][n-1] != -1): #If the table/cache doesn't contain -1 at that position, it means that this subproblem
+                                            #was already computed, so we can take it from the table/cache
             return self.table[m-1][n-1]
 
-        ##In case the table doesn't contain the subproblem solution:
-        
-        if (self.seqA[m-1] == self.seqB[n-1]): #If the symbol of each sequence match
-            self.table[m-1][n-1] = 1 + self.lcs_memoization(m-1,n-1) #If the symbols match, 1 is added and a move in each sequence is made
-            return self.table[m-1][n-1] #We move in the table too
-
+        ##In case the table/cache doesn't contain the subproblem solution:
         else:
-            self.table[m-1][n-1] = max(self.lcs_memoization(m-1,n), self.lcs_memoization(m, n-1)) #We move in each sequence and check which
-                                                                                                    #one returns a max value
-            return self.table[m-1][n-1] #We move in the table too
-    
+            if (self.seqA[m-1] == self.seqB[n-1]): #If the symbol of each sequence match
+                self.table[m-1][n-1] = 1 + self.lcs_memoization(m-1,n-1) #If the symbols match, 1 is added and a move in each sequence is made
+                return self.table[m-1][n-1] #We move in the table too
 
-    
-    def traceback_table_forward(self,m,n):
-        while(self.i<m and self.j<n):
-            lcs=set()
-            
-            if self.seqA[self.i] == self.seqB[self.j]:
-                lcs.add(self.seqA[self.i])
-                self.i += 1
-                self.j += 1
-            
             else:
-            #If the last values don't match, the LCS must be constructed by left direction or top direction. We
-            #go for the biggest value, or for both if they are equal
-            #Top direction: table[m-1][n]
-            #Left direction : table[m][n-1]
+                self.table[m-1][n-1] = max(self.lcs_memoization(m-1,n), self.lcs_memoization(m, n-1)) #We move in each sequence and check which
+                                                                                                        #one returns a max value
+                return self.table[m-1][n-1] #We move in the table too
+        '''
 
-                if (self.table[self.i][self.j+1] > self.table[self.i+1][self.j]):
-                    self.j+=1
-                    lcs = self.traceback_table(self.i, (self.j)+1)
-                    
-
-                if (self.table[self.i+1][self.j] >= self.table[self.i][self.j+1]):
-                    self.i+=1
-                    lcs = self.traceback_table((self.i)+1, self.j)
-
-                if (self.table[self.i+1][self.j] == self.table[self.i][self.j+1]):
-                    left = self.traceback_table(self.i, self.j+1)
-                    top = self.traceback_table(self.i+1, self.j)
-
-                    for l in left:
-                        for t in top:
-                            lcs.add(l)
-                            lcs.add(t)
-
-                    self.i+=1
-                    self.j+=1
-                    
-
-        return lcs
+    
 
     def get_lcs_len_memoization(self):
 
