@@ -93,8 +93,7 @@ class LCS_dynamic:
         """
         start_time = time.time()
         recursive_len = self.lcs_dynamic(len(self.seqA), len(self.seqB))
-        end_time = time.time() - start_time        
-        subsquences = []
+        end_time = time.time() - start_time
 
         print("\nAlgorithm used - Dynamic \n"
                     +"\n--- LCS len:  %s " % (recursive_len) 
