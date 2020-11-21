@@ -5,8 +5,8 @@ Assignment 1: Estratégias de Desenvolvimento de Algoritmos
 Autor: Ana Sofia Fernandes, 88739
 """
 
-import sys
-from Table import Table
+import sys, time
+from Dynamic.Table import Table
 
 ##Class that calculates Longest Common Subsquence for two given strings, using dynamic programming
 
@@ -91,10 +91,20 @@ class LCS_dynamic:
         """
         Getter for lcs len
         """
+        start_time = time.time()
+        recursive_len = self.lcs_dynamic(len(self.seqA), len(self.seqB))
+        end_time = time.time() - start_time        
+        subsquences = []
 
-        print("The len of LCS (calculated using dynamic programing) is",self.lcs_dynamic(len(self.seqA), len(self.seqB)) )
-      
+        print("\nAlgorithm used - Dynamic \n"
+                    +"\n--- LCS len:  %s " % (recursive_len) 
+                    +"\n--- Execution time:  %s seconds" % (round(end_time,7)))
+        
+        print("\nLongest subsquence(s) found:")
         for subsq in self.traceback_table(len(self.seqA), len(self.seqB)):
             print (subsq[::-1])
+
+      
+        
 
         

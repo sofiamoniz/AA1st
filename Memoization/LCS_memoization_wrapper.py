@@ -6,6 +6,7 @@ Autor: Ana Sofia Fernandes, 88739
 """
 from functools import *
 import sys
+import time
 
 ##Class that calculates Longest Common Subsquence for two given strings, using memoization
 
@@ -53,7 +54,12 @@ class LCS_memoization_wrapper:
         """
         Getter for lcs len
         """
-
+        #Check this
+        start_time = time.time()
         self.lcs_recursive_way = self.memo(self.lcs_recursive_way)
-        print("The len of LCS (calculated in recursive way) is", self.lcs_recursive_way(len(self.seqA), len(self.seqB)))
-        print("Recursive calls:",self.num_iter)
+        final= self.lcs_recursive_way(len(self.seqA), len(self.seqB))
+        end_time = time.time() - start_time
+        print("\nAlgorithm used - memoization \n"
+                +"\n--- LCS len:  %s " % (final) 
+                +"\n--- Execution time:  %s seconds" % (round(end_time,7))
+                +"\n--- Recursive calls:  %s " % (self.num_iter))

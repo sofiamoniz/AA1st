@@ -6,6 +6,8 @@ Autor: Ana Sofia Fernandes, 88739
 """
 
 from Recursive.LCS_recursive import LCS_recursive
+from Memoization.LCS_memoization_wrapper import LCS_memoization_wrapper
+from Dynamic.LCS_dynamic import LCS_dynamic
 
 class Example1:
 
@@ -15,8 +17,15 @@ class Example1:
 
     def chose_alg(self,chosen):
         if chosen == "-r":
-            #Escrever para ficheiro
+            #TODO Escrever para ficheiro
             recursive = LCS_recursive(self.seqA,self.seqB)
             recursive.get_lcs_len_recursive()
+        elif chosen == "-m":
+            memoization = LCS_memoization_wrapper(self.seqA,self.seqB)
+            memoization.get_lcs_len_memoization()
+        elif chosen == "-d":
+            dynamic = LCS_dynamic(self.seqA, self.seqB)
+            dynamic.get_lcs_len_dynamic()
+
     
     
