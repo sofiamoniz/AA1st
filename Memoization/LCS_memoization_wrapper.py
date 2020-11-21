@@ -14,20 +14,20 @@ class LCS_memoization_wrapper:
     def __init__(self, seqA , seqB):
         self.seqA = seqA
         self.seqB = seqB
+        self.num_iter = 0
         sys.setrecursionlimit(15000)
 
     def memo(self,func):
         cache = {}
         @wraps(func)
         def wrap (*args):
-            if args not in cache:
-                cache[args] = func(*args)
+            if args not in cache:                
+                cache[args] = func(*args)           
             return cache[args]
         return wrap
 
 
     def lcs_recursive_way(self ,m, n):
-
         """
         This function will calculate, in a recursive way, the len of the 
         longest subsquence between two sequences. There are two cases:
@@ -35,6 +35,7 @@ class LCS_memoization_wrapper:
             2-The last character doesn't match - find the max between lcs_recursive_way(m-1,n) and lcs_recursive_way(m, n-1)
         """
         
+        self.num_iter += 1
         # The len of each sequence passed will be used so that a for loop can be avoided
         # m and n is used so that it can be imagined as a matrix
         if (m==0 or n==0): #If any have len=0, 0 will be returned
@@ -55,3 +56,4 @@ class LCS_memoization_wrapper:
 
         self.lcs_recursive_way = self.memo(self.lcs_recursive_way)
         print("The len of LCS (calculated in recursive way) is", self.lcs_recursive_way(len(self.seqA), len(self.seqB)))
+        print("Recursive calls:",self.num_iter)

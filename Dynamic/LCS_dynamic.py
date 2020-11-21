@@ -15,10 +15,7 @@ class LCS_dynamic:
     def __init__(self, seqA , seqB):
         self.seqA = seqA
         self.seqB = seqB
-        self.lcs_final = []
         self.table = Table(len(self.seqA), len(self.seqB)).build_array()
-        self.i=0
-        self.j=0
         sys.setrecursionlimit(15000)
 
     def lcs_dynamic(self, m, n):
@@ -64,8 +61,6 @@ class LCS_dynamic:
             all_subsquences = self.traceback_table(m-1,n-1)
             for sub in all_subsquences:
                 lcs.add(self.seqA[m-1] + sub)
-
-
         else:
             #If the last values don't match, the LCS must be constructed by left direction or top direction. We
             #go for the biggest value, or for both if they are equal
@@ -91,18 +86,6 @@ class LCS_dynamic:
         return lcs
      
      
-        """
-        if m == 0 or n == 0:
-            return "";
-        if (self.seqA[m - 1] == self.seqB[n - 1]):
-            return self.backtrack(m - 1, n - 1) + self.seqA[m - 1]
-        if (self.table[m][n-1] > self.table[m - 1][n]):
-            return self.backtrack(m,n-1)
-        return self.backtrack(m-1, n);
-        """
-       
-
-
     def get_lcs_len_dynamic(self):
 
         """

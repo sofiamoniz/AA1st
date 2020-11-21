@@ -5,6 +5,7 @@ Assignment 1: Estratégias de Desenvolvimento de Algoritmos
 Autor: Ana Sofia Fernandes, 88739
 """
 import sys
+import time
 
 ##Class that calculates Longest Common Subsquence for two given strings, in a recursive way
 
@@ -14,10 +15,11 @@ class LCS_recursive:
         self.seqA = seqA
         self.seqB = seqB
         sys.setrecursionlimit(15000)
+        self.num_iter = 0
         #self.lcs = ""   
 
     def lcs_recursive_way(self ,m, n):
-
+        self.num_iter +=1
         """
         This function will calculate, in a recursive way, the len of the 
         longest subsquence between two sequences. There are two cases:
@@ -42,6 +44,10 @@ class LCS_recursive:
         """
         Getter for lcs len
         """
-
-        print("The len of LCS (calculated in recursive way) is",self.lcs_recursive_way(len(self.seqA), len(self.seqB)) )
-        
+        start_time = time.time()
+        recursive_len = self.lcs_recursive_way(len(self.seqA), len(self.seqB))
+        end_time = time.time() - start_time
+        print("\n    Algorithm used - recursive \n"
+                    +"\n--- LCS len:  %s " % (recursive_len) 
+                    +"\n--- Execution time:  %s seconds" % (round(end_time,7))
+                    +"\n--- Recursive calls::  %s " % (self.num_iter))
