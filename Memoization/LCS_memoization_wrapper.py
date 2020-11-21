@@ -6,6 +6,7 @@ Autor: Ana Sofia Fernandes, 88739
 """
 from functools import *
 import sys
+
 ##Class that calculates Longest Common Subsquence for two given strings, using memoization
 
 class LCS_memoization_wrapper:
@@ -30,7 +31,7 @@ class LCS_memoization_wrapper:
         """
         This function will calculate, in a recursive way, the len of the 
         longest subsquence between two sequences. There are two cases:
-            1-The last carachter match - increment the length and proceed in the sequence (-1 in each)
+            1-The last character match - increment the length and proceed in the sequence (-1 in each)
             2-The last character doesn't match - find the max between lcs_recursive_way(m-1,n) and lcs_recursive_way(m, n-1)
         """
         
@@ -52,5 +53,5 @@ class LCS_memoization_wrapper:
         Getter for lcs len
         """
 
-        final = self.memo(self.lcs_recursive_way)
-        print("The len of LCS (calculated in recursive way) is", final(len(self.seqA), len(self.seqB)))
+        self.lcs_recursive_way = self.memo(self.lcs_recursive_way)
+        print("The len of LCS (calculated in recursive way) is", self.lcs_recursive_way(len(self.seqA), len(self.seqB)))
