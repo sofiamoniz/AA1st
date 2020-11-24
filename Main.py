@@ -8,6 +8,7 @@ Autor: Ana Sofia Fernandes, 88739
 import getopt, sys
 from Examples.Example1 import Example1
 from Examples.Example2 import Example2
+from Examples.Example3 import Example3
 from Examples.Example4 import Example4
 
 
@@ -20,7 +21,7 @@ def main():
         print ("\nExample:\n  Main.py -d Example1 -s")
         print ("\nExample:\n  Main.py -d Example1")
         print ("\nAvailable algorithms:\n  -r (recursive); -m (memoization); -d (dynamic)")
-        print ("\nAvailable examples:\n  Example1 Example2 Example4")
+        print ("\nAvailable examples:\n  Example1 Example2 Example3 Example4")
 
         sys.exit()
 
@@ -44,6 +45,13 @@ def main():
             example2.chose_alg(alg)
         else:
             example2.chose_alg(alg,show)
+    
+    if example == 'Example3':
+        example3 = Example3()
+        if show == "":
+            example3.chose_alg(alg)
+        else:
+            example3.chose_alg(alg,show)
 
     if example == 'Example4':
         example4 = Example4()
@@ -60,16 +68,16 @@ def main():
             print ("\nExample:\n  Main.py -d Example1 -s")
             print ("\nExample:\n  Main.py -d Example1")
             print ("\nAvailable algorithms:\n  -r (recursive); -m (memoization); -d (dynamic)")
-            print ("\nAvailable examples:\n  Example1 Example2 Example4")
+            print ("\nAvailable examples:\n  Example1 Example2 Example3 Example4")            
             sys.exit()
 
-    if alg not in ['-r','-m','-d'] or example not in ['Example1', 'Example2', 'Example4']:
+    if alg not in ['-r','-m','-d'] or example not in ['Example1', 'Example2','Example3','Example4']:
         print ("Usage:\n  Main.py <algorithm to use> <example to use> <optional:show longest subsquence if dynamic alg used>")
         print ("\nExample:\n  Main.py -m Example1")
         print ("\nExample:\n  Main.py -d Example1 -s")
         print ("\nExample:\n  Main.py -d Example1")
         print ("\nAvailable algorithms:\n  -r (recursive); -m (memoization); -d (dynamic)")
-        print ("\nAvailable examples:\n  Example1 Example2 Example4")
+        print ("\nAvailable examples:\n  Example1 Example2 Example3 Example4")
         sys.exit()
 
 
