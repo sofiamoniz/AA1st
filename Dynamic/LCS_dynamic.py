@@ -16,6 +16,9 @@ class LCS_dynamic:
         self.seqA = seqA
         self.seqB = seqB
         self.table = Table(len(self.seqA), len(self.seqB)).build_array()
+        self.num_iter = 0
+        self.max_calc = 0
+        self.sum_count = 0
         sys.setrecursionlimit(15000)
 
     def lcs_dynamic(self, m, n):
@@ -33,8 +36,10 @@ class LCS_dynamic:
                 if i==0 or j==0: 
                     self.table[i][j] = 0
                 elif self.seqA[i-1] == self.seqB[j-1]: #If the symbol of each sequence match
+                    self.sum_count += 1
                     self.table[i][j] = self.table[i-1][j-1] + 1 #We add 1 and go to the next element in the array
                 else:
+                    self.max_calc += 1
                     self.table[i][j] = max(self.table[i-1][j],self.table[i][j-1]) #We found if the max is the left cell
                                                                                 #Or the top cell and return it
         return self.table[m][n]
@@ -97,13 +102,14 @@ class LCS_dynamic:
 
         print("\nAlgorithm used - Dynamic \n"
                     +"\n--- LCS len:  %s " % (recursive_len) 
-                    +"\n--- Execution time:  %s seconds" % (round(end_time,7)))
+                    +"\n--- Execution time:  %s seconds" % (round(end_time,7))
+                    +"\n--- Basic operations:  %s sums and %s maximum calculations" % (self.sum_count, self.max_calc))    
         
+
+    def get_lcs_longest_subsquence(self):
         print("\nLongest subsquence(s) found:")
         for subsq in self.traceback_table(len(self.seqA), len(self.seqB)):
             print (subsq[::-1])
-
-      
         
 
         

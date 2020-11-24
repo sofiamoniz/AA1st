@@ -14,9 +14,11 @@ class LCS_recursive:
     def __init__(self, seqA , seqB):
         self.seqA = seqA
         self.seqB = seqB
-        sys.setrecursionlimit(15000)
         self.num_iter = 0
-        #self.lcs = ""   
+        self.max_calc = 0
+        self.sum_count = 0
+        sys.setrecursionlimit(15000)
+        
 
     def lcs_recursive_way(self ,m, n):
         self.num_iter +=1
@@ -33,9 +35,11 @@ class LCS_recursive:
             return 0
 
         elif (self.seqA[m-1] == self.seqB[n-1]): #If the symbols match, 1 is added and a move in each sequence is made
+            self.sum_count += 1
             return 1 + self.lcs_recursive_way(m-1,n-1)
         
         else: # If there's no match in that position
+            self.max_calc += 1
             return max(self.lcs_recursive_way(m-1,n), self.lcs_recursive_way(m, n-1)) #We move in each sequence and check which
                                                                                         #one returns a max value
 
@@ -50,4 +54,5 @@ class LCS_recursive:
         print("\n    Algorithm used - recursive \n"
                     +"\n--- LCS len:  %s " % (recursive_len) 
                     +"\n--- Execution time:  %s seconds" % (round(end_time,7))
+                    +"\n--- Basic operations:  %s sums and %s maximum calculations" % (self.sum_count, self.max_calc)
                     +"\n--- Recursive calls::  %s " % (self.num_iter))

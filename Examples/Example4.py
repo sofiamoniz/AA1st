@@ -73,7 +73,7 @@ class Example4:
                     '''
         
 
-    def chose_alg(self,chosen):
+    def chose_alg(self,chosen, show=None):
         if chosen == "-r":
             #TODO Escrever para ficheiro
             recursive = LCS_recursive(self.seqA,self.seqB)
@@ -84,6 +84,8 @@ class Example4:
         elif chosen == "-d":
             dynamic = LCS_dynamic(self.seqA, self.seqB)
             dynamic.get_lcs_len_dynamic()
+            if show == "-s":
+                dynamic.get_lcs_longest_subsquence()
 
     
     
