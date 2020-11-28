@@ -19,7 +19,7 @@ class LCS_memoization_wrapper:
         self.cache_access = 0
         self.max_calc = 0
         self.sum_count = 0
-        sys.setrecursionlimit(15000)
+        sys.setrecursionlimit(150000)
 
     def memo(self,func):
         cache = {}
