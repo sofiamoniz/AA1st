@@ -52,17 +52,17 @@ class LCS_dynamic:
         This function will traceback the table (2d array), that stores the LCS sequence
         len of each step of the calculation.
         The traceback starts by the last cell -> when the len decreases between cells,
-        it might be a sign that the subsquences have that element in common.
+        it might be a sign that the subsequences have that element in common.
         """
 
-        lcs = set() #lcs set to store the possible subsquence(s)
+        lcs = set() #lcs set to store the possible subsequence(s)
 
         if m==0 or n==0: #If they are 0, we know that we are at the first column/row and that those values are 0 - no symbol
             lcs.add("")
             return lcs
 
-        if (self.seqA[m-1] == self.seqB[n-1]): #If the last value of each subsquence is equal, this char
-                                            #Must be present in all substrings once this is a match
+        if (self.seqA[m-1] == self.seqB[n-1]): #If the last value of each subsequence is equal, this char
+                                            #Must be present in all subsequences once this is a match
             all_subsquences = self.traceback_table(m-1,n-1)
             for sub in all_subsquences:
                 lcs.add(self.seqA[m-1] + sub)
