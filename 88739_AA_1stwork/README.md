@@ -26,6 +26,6 @@ It can be found by using a recursive algorithm; a recursive algorithm using memo
 
     Example of usage: python3 Main.py -d Example3 -s
 
-**The code is located in the folder "code"
-**The pdf report can be found in the folder "report"
+**The code is located in the folder "code"**
+**The pdf report can be found in the folder "report"**
 **The fluxograms inserted in the report can be found in the folder "fluxograms", once it may not be perceptible in the pdf in certain devices**
