@@ -1,11 +1,11 @@
-##AA, December 2020
-##Assignment 1: Estratégias de Desenvolvimento de Algoritmos - The Longest Common Subsequence Problem
-##Autor: Ana Sofia Medeiros de Castro Moniz Fernandes, 88739
+# AA, December 2020
+# Assignment 1: Estratégias de Desenvolvimento de Algoritmos - The Longest Common Subsequence Problem
+# Autor: Ana Sofia Medeiros de Castro Moniz Fernandes, 88739
 
-##With this program, it is possible to find the Longest Common Subsquence between two given sequences.
-##It can be found by using a recursive algorithm; a recursive algorithm using memoization; a dynamic algorithm
+## With this program, it is possible to find the Longest Common Subsquence between two given sequences.
+## It can be found by using a recursive algorithm; a recursive algorithm using memoization; a dynamic algorithm
 
-##To run the program:
+### To run the program:
     Main.py <algorithm to use> <example to use> <optional:show longest subsquence if dynamic alg used>
 
     Algorithm to use:
@@ -26,6 +26,6 @@
 
     Example of usage: python3 Main.py -d Example3 -s
 
-##The code is located in the folder "code"
-##The pdf report can be found in the folder "report"
-##The fluxograms inserted in the report can be found in the folder "fluxograms", once it may not be perceptible in the pdf in certain devices
+### The code is located in the folder "code"
+### The pdf report can be found in the folder "report"
+### The fluxograms inserted in the report can be found in the folder "fluxograms", once it may not be perceptible in the pdf in certain devices
