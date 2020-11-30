@@ -62,6 +62,7 @@ def main():
                 '''
     lcs = LCS_dynamic("JOAOESUSUEJOAO","SUSUEJOAO")
     lcs.get_lcs_len_dynamic()
+    lcs.get_lcs_longest_subsquence()
 
 if __name__ == '__main__':
     main()

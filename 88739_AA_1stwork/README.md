@@ -28,4 +28,4 @@
 
 ##The code is located in the folder "code"
 ##The pdf report can be found in the folder "report"
-##The fluxograms inserted in the report can be found in the folder "Fluxograms", once it is not perceptible in the pdf
+##The fluxograms inserted in the report can be found in the folder "fluxograms", once it may not be perceptible in the pdf in certain devices
