@@ -26,6 +26,8 @@ It can be found by using a recursive algorithm; a recursive algorithm using memo
 
     Example of usage: python3 Main.py -d Example3 -s
 
+### Note:
+
 -**The code is located in the folder "code"**
 
 -**The pdf report can be found in the folder "report"**
