@@ -5,7 +5,7 @@
 **With this program, it is possible to find the Longest Common Subsquence between two given sequences.
 It can be found by using a recursive algorithm, a recursive algorithm using memoization or a dynamic algorithm**
 
-### To run the program:
+### To run the program (inside folder "code"):
     Main.py <algorithm to use> <example to use> <optional:show longest subsquence if dynamic alg used>
 
     Algorithm to use:
